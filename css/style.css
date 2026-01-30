@@ -1,60 +1,108 @@
 :root {
-  --bg: #fff;
+  --bg: #ffffff;
   --text: #222;
   --side: #f3f3f3;
+  --border: #ddd;
   --active: #7b5b89;
 }
 
 body.dark {
-  --bg: #1e1e1e;
-  --text: #ddd;
-  --side: #2a2a2a;
+  --bg: #1b1b1b;
+  --text: #e5e5e5;
+  --side: #242424;
+  --border: #333;
   --active: #81e5d0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
 }
 
+/* 整体布局 */
 .layout {
   display: flex;
-  height: 100vh;
+  height: 100vh;              /* 🔴 必须 */
+  align-items: stretch;       /* 🔴 必须 */
 }
 
-/* 左侧栏 */
+/* ===== 侧边栏 ===== */
 .sidebar {
-  width: 220px;
+  width: 240px;
   background: var(--side);
-  flex-shrink: 0; /* 🔴 关键 */
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;             /* 🔴 防止被压扁 */
   display: flex;
   flex-direction: column;
+  transition: width 0.3s ease;
 }
 
 /* 收起状态 */
 .sidebar.collapsed {
-  width: 48px;
+  width: 56px;
 }
 
-/* 右侧内容 */
-#content {
+/* 顶部 */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 导航区 */
+nav {
   flex: 1;
-  padding: 32px;
   overflow-y: auto;
 }
 
-/* 导航 */
 .nav {
-  display: block;
-  padding: 10px;
+  width: 100%;
+  padding: 12px 16px;
   border: none;
   background: none;
   text-align: left;
   cursor: pointer;
+  color: inherit;
+}
+
+.nav:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+body.dark .nav:hover {
+  background: rgba(255,255,255,0.05);
 }
 
 .nav.active {
   background: var(--active);
   color: #fff;
+}
+
+/* 底部 */
+#theme {
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+/* ===== 内容区 ===== */
+#content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
 }
