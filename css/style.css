@@ -1,7 +1,7 @@
 :root {
-  --bg: #ffffff;
+  --bg: #fff;
   --text: #222;
-  --side: #f2f2f2;
+  --side: #f3f3f3;
   --active: #7b5b89;
 }
 
@@ -23,24 +23,30 @@ body {
   height: 100vh;
 }
 
-aside {
+/* 左侧栏 */
+.sidebar {
   width: 220px;
   background: var(--side);
+  flex-shrink: 0; /* 🔴 关键 */
   display: flex;
   flex-direction: column;
 }
 
-aside.collapsed {
+/* 收起状态 */
+.sidebar.collapsed {
   width: 48px;
 }
 
-main {
+/* 右侧内容 */
+#content {
   flex: 1;
   padding: 32px;
   overflow-y: auto;
 }
 
+/* 导航 */
 .nav {
+  display: block;
   padding: 10px;
   border: none;
   background: none;
@@ -50,5 +56,5 @@ main {
 
 .nav.active {
   background: var(--active);
-  color: white;
+  color: #fff;
 }
