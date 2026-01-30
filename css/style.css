@@ -1,50 +1,86 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-               "Noto Serif SC", "PingFang SC", sans-serif;
+:root {
+  --bg: #ffffff;
+  --text: #222;
+  --sidebar: #f4f4f5;
+  --active: #7b5b89;
 }
 
-.layout {
+body.dark {
+  --bg: #1f1f1f;
+  --text: #e5e5e5;
+  --sidebar: #2a2a2a;
+  --active: #81e5d0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+.app {
   display: flex;
   height: 100vh;
 }
 
-/* 左侧栏 */
+/* sidebar */
 .sidebar {
-  width: 260px;
-  background: #f4f4f5;
-  padding: 16px;
-  box-sizing: border-box;
-  overflow-y: auto;
+  width: 240px;
+  background: var(--sidebar);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
 }
 
-.sidebar h2 {
-  margin-top: 0;
-  font-size: 18px;
+.sidebar.collapsed {
+  width: 56px;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
-.sidebar li {
-  margin: 8px 0;
+#toggleSidebar {
+  margin-right: 8px;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #333;
+.nav-section {
+  padding: 8px 12px;
+  font-size: 12px;
+  opacity: 0.6;
 }
 
-.sidebar a:hover {
-  text-decoration: underline;
+.nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
 }
 
-/* 右侧正文 */
+.nav-item.active {
+  background: var(--active);
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px;
+}
+
+/* content */
 .content {
   flex: 1;
-  padding: 32px;
+  padding: 40px;
   overflow-y: auto;
-  line-height: 1.8;
+}
+
+.placeholder {
+  opacity: 0.5;
 }
