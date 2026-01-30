@@ -2,16 +2,17 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>TachibanaMomo</title>
+  <title>Fanfic</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="layout">
 
-  <aside id="sidebar">
+  <!-- 一定要有这个 id -->
+  <aside id="sidebar" class="sidebar">
     <div class="top">
-      <button id="btnToggle">☰</button>
+      <button id="toggle">☰</button>
       <span>目录</span>
     </div>
 
@@ -21,7 +22,7 @@
       <button class="nav" data-src="articles/b.html">第二篇文章</button>
     </nav>
 
-    <button id="btnTheme">🌙 夜间</button>
+    <button id="theme">🌙 夜间</button>
   </aside>
 
   <main id="content">
@@ -30,7 +31,7 @@
 
 </div>
 
+<!-- 一定放在 body 最后 -->
 <script src="script.js"></script>
 </body>
 </html>
-
