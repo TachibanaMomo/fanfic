@@ -1,23 +1,47 @@
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-article]");
-  if (!link) return;
+const content = document.getElementById("content");
+const navItems = document.querySelectorAll(".nav-item");
+const sidebar = document.getElementById("sidebar");
 
-  e.preventDefault();
+/* 加载页面 */
+async function loadPage(src, button) {
+  try {
+    const res = await fetch(src);
+    const html = await res.text();
+    content.innerHTML = html;
 
-  const file = link.dataset.article;
-  const content = document.getElementById("content");
+    navItems.forEach(b => b.classList.remove("active"));
+    if (button) button.classList.add("active");
 
-  fetch(`./articles/${file}`)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("加载失败：" + res.status);
-      }
-      return res.text();
-    })
-    .then((html) => {
-      content.innerHTML = html;
-    })
-    .catch((err) => {
-      content.innerHTML = `<p class="text-red-500">${err}</p>`;
-    });
+  } catch {
+    content.innerHTML = "<p>加载失败</p>";
+  }
+}
+
+/* 绑定点击 */
+navItems.forEach(btn => {
+  btn.addEventListener("click", () => {
+    loadPage(btn.dataset.src, btn);
+  });
+});
+
+/* 侧边栏收起 */
+document.getElementById("toggleSidebar")
+  .addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
+  });
+
+/* 夜间模式 */
+const themeBtn = document.getElementById("toggleTheme");
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
 });
