@@ -1,47 +1,29 @@
 const content = document.getElementById("content");
-const navItems = document.querySelectorAll(".nav-item");
+const navs = document.querySelectorAll(".nav");
 const sidebar = document.getElementById("sidebar");
 
-/* 加载页面 */
-async function loadPage(src, button) {
+async function load(src, btn) {
   try {
-    const res = await fetch(src);
-    const html = await res.text();
+    const r = await fetch(src);
+    if (!r.ok) throw new Error("404");
+    const html = await r.text();
     content.innerHTML = html;
 
-    navItems.forEach(b => b.classList.remove("active"));
-    if (button) button.classList.add("active");
-
+    navs.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
   } catch {
     content.innerHTML = "<p>加载失败</p>";
   }
 }
 
-/* 绑定点击 */
-navItems.forEach(btn => {
-  btn.addEventListener("click", () => {
-    loadPage(btn.dataset.src, btn);
-  });
+navs.forEach(btn => {
+  btn.onclick = () => load(btn.dataset.src, btn);
 });
 
-/* 侧边栏收起 */
-document.getElementById("toggleSidebar")
-  .addEventListener("click", () => {
-    sidebar.classList.toggle("collapsed");
-  });
+document.getElementById("btnToggle").onclick = () => {
+  sidebar.classList.toggle("collapsed");
+};
 
-/* 夜间模式 */
-const themeBtn = document.getElementById("toggleTheme");
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-  document.body.classList.add("dark");
-}
-
-themeBtn.addEventListener("click", () => {
+document.getElementById("btnTheme").onclick = () => {
   document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
-});
+};
