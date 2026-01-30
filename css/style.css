@@ -1,14 +1,14 @@
 :root {
   --bg: #ffffff;
   --text: #222;
-  --sidebar: #f4f4f5;
+  --side: #f2f2f2;
   --active: #7b5b89;
 }
 
 body.dark {
-  --bg: #1f1f1f;
-  --text: #e5e5e5;
-  --sidebar: #2a2a2a;
+  --bg: #1e1e1e;
+  --text: #ddd;
+  --side: #2a2a2a;
   --active: #81e5d0;
 }
 
@@ -16,71 +16,39 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, sans-serif;
 }
 
-.app {
+.layout {
   display: flex;
   height: 100vh;
 }
 
-/* sidebar */
-.sidebar {
-  width: 240px;
-  background: var(--sidebar);
+aside {
+  width: 220px;
+  background: var(--side);
   display: flex;
   flex-direction: column;
-  transition: width 0.3s;
 }
 
-.sidebar.collapsed {
-  width: 56px;
+aside.collapsed {
+  width: 48px;
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-#toggleSidebar {
-  margin-right: 8px;
-}
-
-.nav-section {
-  padding: 8px 12px;
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.nav-item {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 10px 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-.nav-item.active {
-  background: var(--active);
-  color: #fff;
-}
-
-.sidebar-footer {
-  margin-top: auto;
-  padding: 10px;
-}
-
-/* content */
-.content {
+main {
   flex: 1;
-  padding: 40px;
+  padding: 32px;
   overflow-y: auto;
 }
 
-.placeholder {
-  opacity: 0.5;
+.nav {
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav.active {
+  background: var(--active);
+  color: white;
 }
