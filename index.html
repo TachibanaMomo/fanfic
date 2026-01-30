@@ -1,47 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fanfic Archive</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Fanfic</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
+<div class="layout">
 
-  <!-- 侧边栏 -->
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-      <button id="toggleSidebar">☰</button>
-      <h1>Fanfic</h1>
+  <aside id="sidebar">
+    <div class="top">
+      <button id="btnToggle">☰</button>
+      <span>目录</span>
     </div>
 
-    <nav id="nav">
-      <div class="nav-section">ABOUT</div>
-      <button class="nav-item"
-        data-src="pages/about.html">
-        作者介绍
-      </button>
-
-      <div class="nav-section">ARTICLES</div>
-      <button class="nav-item"
-        data-src="articles/001.html">
-        第一篇文章
-      </button>
-      <button class="nav-item"
-        data-src="articles/002.html">
-        第二篇文章
-      </button>
+    <nav>
+      <button class="nav" data-src="pages/about.html">作者介绍</button>
+      <button class="nav" data-src="articles/a.html">第一篇文章</button>
+      <button class="nav" data-src="articles/b.html">第二篇文章</button>
     </nav>
 
-    <div class="sidebar-footer">
-      <button id="toggleTheme">🌙 夜间模式</button>
-    </div>
+    <button id="btnTheme">🌙 夜间</button>
   </aside>
 
-  <!-- 内容区 -->
-  <main id="content" class="content">
-    <p class="placeholder">请选择一篇作品</p>
+  <main id="content">
+    <p class="hint">请选择一篇作品</p>
   </main>
 
 </div>
