@@ -1,28 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Self67 Fanfic</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Fanfic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    }
+  </style>
 </head>
-<body>
 
-<div class="layout">
-  <!-- 左侧目录 -->
-  <aside class="sidebar">
-    <h2>作品列表</h2>
-    <ul>
-      <li><a href="#" data-article="a.html">第一篇</a></li>
-      <li><a href="#" data-article="b.html">第二篇</a></li>
-    </ul>
-  </aside>
+<body class="bg-gray-100">
 
-  <!-- 右侧正文 -->
-  <main class="content" id="content">
-  <p>请选择一篇作品。</p>
-</main>
-</div>
+  <div class="flex h-screen">
 
-<script src="js/main.js"></script>
+    <!-- 左侧目录 -->
+    <aside class="w-64 bg-white border-r p-4">
+      <h2 class="font-bold mb-4">作品列表</h2>
+      <ul class="space-y-2">
+        <li>
+          <a href="#" data-article="a.html"
+             class="text-blue-600 hover:underline">
+            第一篇文章
+          </a>
+        </li>
+        <li>
+          <a href="#" data-article="b.html"
+             class="text-blue-600 hover:underline">
+            第二篇文章
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- 右侧内容区 -->
+    <main class="flex-1 p-6 overflow-y-auto">
+      <div id="content" class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">请选择一篇作品</p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
