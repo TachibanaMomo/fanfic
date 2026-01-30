@@ -2,51 +2,50 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>Fanfic</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-    }
-  </style>
+  <title>Fanfic Archive</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body class="bg-gray-100">
+<div class="app">
 
-  <div class="flex h-screen">
+  <!-- 侧边栏 -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <button id="toggleSidebar">☰</button>
+      <h1>Fanfic</h1>
+    </div>
 
-    <!-- 左侧目录 -->
-    <aside class="w-64 bg-white border-r p-4">
-      <h2 class="font-bold mb-4">作品列表</h2>
-      <ul class="space-y-2">
-        <li>
-          <a href="#" data-article="a.html"
-             class="text-blue-600 hover:underline">
-            第一篇文章
-          </a>
-        </li>
-        <li>
-          <a href="#" data-article="b.html"
-             class="text-blue-600 hover:underline">
-            第二篇文章
-          </a>
-        </li>
-      </ul>
-    </aside>
+    <nav id="nav">
+      <div class="nav-section">ABOUT</div>
+      <button class="nav-item"
+        data-src="pages/about.html">
+        作者介绍
+      </button>
 
-    <!-- 右侧内容区 -->
-    <main class="flex-1 p-6 overflow-y-auto">
-      <div id="content" class="bg-white p-6 rounded shadow">
-        <p class="text-gray-500">请选择一篇作品</p>
-      </div>
-    </main>
+      <div class="nav-section">ARTICLES</div>
+      <button class="nav-item"
+        data-src="articles/001.html">
+        第一篇文章
+      </button>
+      <button class="nav-item"
+        data-src="articles/002.html">
+        第二篇文章
+      </button>
+    </nav>
 
-  </div>
+    <div class="sidebar-footer">
+      <button id="toggleTheme">🌙 夜间模式</button>
+    </div>
+  </aside>
 
-  <script src="script.js"></script>
+  <!-- 内容区 -->
+  <main id="content" class="content">
+    <p class="placeholder">请选择一篇作品</p>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
