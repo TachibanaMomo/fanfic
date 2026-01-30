@@ -1,13 +1,20 @@
+const sidebar = document.getElementById("sidebar");
 const content = document.getElementById("content");
 const navs = document.querySelectorAll(".nav");
-const sidebar = document.getElementById("sidebar");
+
+document.getElementById("toggle").onclick = () => {
+  sidebar.classList.toggle("collapsed");
+};
+
+document.getElementById("theme").onclick = () => {
+  document.body.classList.toggle("dark");
+};
 
 async function load(src, btn) {
   try {
     const r = await fetch(src);
-    if (!r.ok) throw new Error("404");
-    const html = await r.text();
-    content.innerHTML = html;
+    if (!r.ok) throw new Error();
+    content.innerHTML = await r.text();
 
     navs.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
@@ -19,11 +26,3 @@ async function load(src, btn) {
 navs.forEach(btn => {
   btn.onclick = () => load(btn.dataset.src, btn);
 });
-
-document.getElementById("btnToggle").onclick = () => {
-  sidebar.classList.toggle("collapsed");
-};
-
-document.getElementById("btnTheme").onclick = () => {
-  document.body.classList.toggle("dark");
-};
