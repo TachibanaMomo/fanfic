@@ -8,11 +8,11 @@
 </head>
 
 <body class="light">
-  <!-- 侧栏切换按钮 -->
-  <button id="toggleSidebar">☰</button>
+  <!-- 侧栏按钮 -->
+  <button id="toggleSidebar" aria-label="toggle">☰</button>
 
-  <!-- 侧边栏 -->
-  <aside id="sidebar">
+  <!-- 侧边栏（默认关闭） -->
+  <aside id="sidebar" class="closed">
     <nav class="nav">
       <a href="#" data-page="pages/about.html">作者介绍</a>
 
@@ -20,19 +20,23 @@
 
       <a href="#" data-page="articles/a.html">第一篇文章</a>
       <a href="#" data-page="articles/b.html">第二篇文章</a>
+
+      <details>
+        <summary>📁 合集一</summary>
+        <a href="#" data-page="articles/series1/c.html">第三篇文章</a>
+        <a href="#" data-page="articles/series1/d.html">第四篇文章</a>
+      </details>
     </nav>
 
-    <!-- 互动区（始终在底部） -->
+    <!-- 底部互动区 -->
     <div class="interaction">
       <a href="#" data-page="pages/reader.html">💬 读者互动</a>
       <button id="themeToggle">🌙 / ☀️</button>
     </div>
   </aside>
 
-  <!-- 主内容区 -->
-  <main id="content">
-    <!-- 默认显示作者介绍 -->
-  </main>
+  <!-- 主内容 -->
+  <main id="content"></main>
 
   <script src="script.js"></script>
 </body>
