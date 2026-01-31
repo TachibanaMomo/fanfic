@@ -1,28 +1,28 @@
 const sidebar = document.getElementById("sidebar");
-const content = document.getElementById("content");
-const navs = document.querySelectorAll(".nav");
+const toggleBtn = document.getElementById("toggleSidebar");
+const iframe = document.getElementById("contentFrame");
+const navItems = document.querySelectorAll(".nav-item");
 
-document.getElementById("toggle").onclick = () => {
+// 收起 / 展开侧边栏
+toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
-};
+});
 
-document.getElementById("theme").onclick = () => {
-  document.body.classList.toggle("dark");
-};
+// 点击切换内容
+navItems.forEach(item => {
+  item.addEventListener("click", e => {
+    e.preventDefault();
 
-async function load(src, btn) {
-  try {
-    const r = await fetch(src);
-    if (!r.ok) throw new Error();
-    content.innerHTML = await r.text();
+    const page = item.dataset.page;
+    iframe.src = page;
 
-    navs.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  } catch {
-    content.innerHTML = "<p>加载失败</p>";
-  }
-}
+    // 高亮当前项
+    navItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
 
-navs.forEach(btn => {
-  btn.onclick = () => load(btn.dataset.src, btn);
+    // 手机端自动收起
+    if (window.innerWidth <= 900) {
+      sidebar.classList.add("collapsed");
+    }
+  });
 });
