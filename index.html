@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Fanfic</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
+<button id="toggleSidebar" class="sidebar-toggle">☰</button>
+
 <div class="layout">
 
-  <!-- 一定要有这个 id -->
-  <aside id="sidebar" class="sidebar">
-    <div class="top">
-      <button id="toggle">☰</button>
-      <span>目录</span>
-    </div>
+  <!-- 侧边栏 -->
+  <aside id="sidebar">
+    <h2 class="site-title">📚 Fanfic</h2>
 
     <nav>
-      <button class="nav" data-src="pages/about.html">作者介绍</button>
-      <button class="nav" data-src="articles/a.html">第一篇文章</button>
-      <button class="nav" data-src="articles/b.html">第二篇文章</button>
-    </nav>
+      <ul>
+        <!-- 页面 -->
+        <li>
+          <a href="#" class="nav-item active" data-page="pages/about.html">
+            作者介绍
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-page="pages/reader.html">
+            读者互动
+          </a>
+        </li>
 
-    <button id="theme">🌙 夜间</button>
+        <hr />
+
+        <!-- 文章 -->
+        <li>
+          <a href="#" class="nav-item" data-page="articles/a.html">
+            第一篇文章
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item" data-page="articles/b.html">
+            第二篇文章
+          </a>
+        </li>
+      </ul>
+    </nav>
   </aside>
 
-  <main id="content">
-    <p class="hint">请选择一篇作品</p>
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 默认直接显示作者介绍 -->
+    <iframe id="contentFrame" src="pages/about.html"></iframe>
   </main>
 
 </div>
 
-<!-- 一定放在 body 最后 -->
-<script src="script.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
