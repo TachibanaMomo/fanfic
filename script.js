@@ -1,36 +1,48 @@
-const sidebar = document.getElementById("sidebar");
-const toggleBtn = document.getElementById("toggleSidebar");
-const themeBtn = document.getElementById("themeToggle");
-const iframe = document.getElementById("contentFrame");
-const navItems = document.querySelectorAll(".nav-item");
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("sidebar");
+  const content = document.getElementById("content");
+  const toggleSidebar = document.getElementById("toggleSidebar");
+  const toggleTheme = document.getElementById("toggleTheme");
 
-// 侧栏开关
-toggleBtn.onclick = () => {
-  sidebar.classList.toggle("collapsed");
-};
+  // 默认加载作者介绍
+  loadPage("pages/about.html");
 
-// 切换内容
-navItems.forEach(item => {
-  item.onclick = e => {
-    e.preventDefault();
-    iframe.src = item.dataset.page;
+  // 侧栏开关
+  toggleSidebar.addEventListener("click", () => {
+    sidebar.classList.toggle("closed");
+  });
 
-    navItems.forEach(i => i.classList.remove("active"));
-    item.classList.add("active");
-  };
-});
-
-// 日 / 夜模式（默认夜）
-themeBtn.onclick = () => {
-  document.body.classList.toggle("light");
-
-  if (document.body.classList.contains("light")) {
-    document.body.style.background = "#f5f5f5";
-    document.body.style.color = "#222";
-    themeBtn.textContent = "🌞";
-  } else {
-    document.body.style.background = "#111";
-    document.body.style.color = "#ddd";
-    themeBtn.textContent = "🌙";
+  // 夜间模式
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
   }
-};
+
+  toggleTheme.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("dark") ? "dark" : "light"
+    );
+  });
+
+  // 侧栏链接点击
+  sidebar.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      e.preventDefault();
+      const page = e.target.dataset.page;
+      if (page) loadPage(page);
+    }
+  });
+
+  function loadPage(url) {
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        content.innerHTML = html;
+      })
+      .catch(() => {
+        content.innerHTML = "<p>加载失败。</p>";
+      });
+  }
+});
