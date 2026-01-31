@@ -1,94 +1,98 @@
+/* ===== 基础变量 ===== */
 :root {
   --bg: #ffffff;
-  --text: #222;
-  --sidebar: #f4f4f4;
+  --text: #111;
+  --sidebar: #f5f5f5;
+  --highlight: #cce6ff;
 }
 
 body.dark {
   --bg: #121212;
   --text: #eaeaea;
   --sidebar: #1e1e1e;
+  --highlight: #333;
 }
 
 body {
   margin: 0;
+  display: flex;
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, sans-serif;
 }
 
-.container {
-  display: flex;
-}
-
-.sidebar {
-  width: 240px;
+/* ===== 侧边栏 ===== */
+#sidebar {
+  width: 260px;
   background: var(--sidebar);
-  padding: 1rem;
-  transition: transform 0.3s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 16px 16px; /* 整体下移，避开按钮 */
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform .3s;
 }
 
-.sidebar.closed {
+#sidebar.closed {
   transform: translateX(-100%);
 }
 
-.sidebar h2 {
-  margin-top: 0.5rem;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 0.5rem 0;
-}
-
-.sidebar a {
+.nav a {
+  display: block;
+  padding: 8px;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+  border-radius: 6px;
 }
 
-.sidebar .bottom {
-  margin-top: 1rem;
+.nav a.active {
+  background: var(--highlight);
 }
 
-.content {
-  flex: 1;
-  padding: 2rem;
-  min-height: 100vh;
+.nav hr {
+  margin: 12px 0;
 }
 
-.sidebar-btn,
-.theme-btn {
+/* ===== 互动区固定底部 ===== */
+.interaction {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== 内容区 ===== */
+#content {
+  margin-left: 260px;
+  padding: 24px;
+  width: 100%;
+  transition: margin-left .3s;
+}
+
+#sidebar.closed + #content {
+  margin-left: 0;
+}
+
+/* ===== 按钮 ===== */
+#toggleSidebar {
   position: fixed;
-  top: 1rem;
-  padding: 0.5rem;
+  top: 12px;
+  left: 12px;
   z-index: 1000;
 }
 
-.sidebar-btn {
-  left: 1rem;
+#themeToggle {
+  cursor: pointer;
 }
 
-.theme-btn {
-  right: 1rem;
-}
-
-/* 📱 响应式 */
+/* ===== 手机端 ===== */
 @media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 999;
+  #sidebar {
+    width: 200px;
   }
-
-  .content {
-    padding: 1.5rem;
+  #content {
+    margin-left: 0;
   }
 }
-
