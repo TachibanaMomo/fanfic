@@ -4,115 +4,73 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", serif;
-  transition: background 0.3s, color 0.3s;
-}
-
-/* ===== 主题 ===== */
-body.dark {
+  font-family: serif;
   background: #111;
   color: #ddd;
 }
 
-body.light {
-  background: #f4f4f4;
-  color: #222;
-}
-
 /* ===== 布局 ===== */
 .layout {
-  display: flex;
   height: 100vh;
-  overflow: hidden;
 }
 
 /* ===== 侧边栏 ===== */
 #sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 240px;
+  height: 100%;
   background: #1c1c1c;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
   transition: transform 0.3s ease;
-}
-
-body.light #sidebar {
-  background: #ffffff;
+  z-index: 1000;
 }
 
 #sidebar.collapsed {
   transform: translateX(-100%);
 }
 
-/* ===== 标题 ===== */
-.site-title {
-  margin: 0 0 16px;
-  font-size: 20px;
-}
-
 /* ===== 导航 ===== */
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-list li {
-  margin-bottom: 6px;
-}
-
-.divider {
-  margin: 14px 0 6px;
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-/* 链接 */
 .nav-item {
   display: block;
   padding: 6px 8px;
-  border-radius: 4px;
+  margin-bottom: 6px;
+  color: #aaa;
   text-decoration: none;
-  color: inherit;
-  opacity: 0.8;
+  border-radius: 4px;
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,0.08);
-  opacity: 1;
+  background: #333;
+  color: #fff;
 }
 
 .nav-item.active {
-  background: rgba(255,255,255,0.16);
-  opacity: 1;
+  background: #444;
+  color: #fff;
 }
 
-body.light .nav-item:hover {
-  background: rgba(0,0,0,0.06);
-}
-
-body.light .nav-item.active {
-  background: rgba(0,0,0,0.1);
-}
-
-/* 底部互动 */
-.sidebar-bottom {
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding-top: 12px;
+.divider {
+  height: 1px;
+  background: #333;
+  margin: 10px 0;
 }
 
 /* ===== 主内容 ===== */
 .main-content {
-  flex: 1;
-  background: inherit;
+  margin-left: 240px;
+  height: 100vh;
 }
 
 iframe {
   width: 100%;
   height: 100%;
   border: none;
-  background: inherit;
+  background: #111;
 }
 
 /* ===== 按钮 ===== */
@@ -125,7 +83,6 @@ iframe {
   color: #fff;
   border: none;
   padding: 6px 10px;
-  font-size: 18px;
   cursor: pointer;
 }
 
@@ -133,13 +90,7 @@ iframe {
   left: 52px;
 }
 
-/* ===== 响应式 ===== */
-@media (max-width: 900px) {
-  #sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    z-index: 1500;
-  }
+/* ===== 侧栏收起时，主内容占满 ===== */
+#sidebar.collapsed ~ .main-content {
+  margin-left: 0;
 }
