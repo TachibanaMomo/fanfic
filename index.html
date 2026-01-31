@@ -5,9 +5,8 @@
   <title>Fanfic</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body class="dark">
+<body>
 
-<!-- 左上角按钮 -->
 <button id="toggleSidebar" class="icon-btn">☰</button>
 <button id="themeToggle" class="icon-btn theme-btn">🌙</button>
 
@@ -15,38 +14,40 @@
 
   <!-- 侧边栏 -->
   <aside id="sidebar">
-    <div class="sidebar-top">
-      <h1 class="site-title">Fanfic</h1>
 
-      <ul class="nav-list">
-        <li>
-          <a href="#" class="nav-item active" data-page="pages/about.html">
-            作者介绍
-          </a>
-        </li>
+    <!-- 上半部分：导航 -->
+    <nav class="sidebar-main">
+      <a href="#" class="nav-item active" data-page="pages/about.html">
+        作者介绍
+      </a>
 
-        <li class="divider">作品</li>
+      <div class="divider"></div>
 
-        <li>
-          <a href="#" class="nav-item" data-page="articles/a.html">
-            第一篇文章
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-item" data-page="articles/b.html">
-            第二篇文章
-          </a>
-        </li>
-      </ul>
-    </div>
+      <a href="#" class="nav-item" data-page="articles/a.html">
+        第一篇文章
+      </a>
+      <a href="#" class="nav-item" data-page="articles/b.html">
+        第二篇文章
+      </a>
+    </nav>
 
-    <!-- 侧栏底部 · 互动 -->
-    <div class="sidebar-bottom">
-      <a href="#" class="nav-item reader-link" data-page="pages/reader.html">
-        每日和读者搏斗
+    <!-- 底部：互动（真正贴底） -->
+    <div class="sidebar-footer">
+      <div class="divider"></div>
+      <a href="#" class="nav-item" data-page="pages/reader.html">
+        💬 读者互动
       </a>
     </div>
+
   </aside>
 
   <!-- 主内容 -->
-  <m
+  <main class="main-content">
+    <iframe id="contentFrame" src="pages/about.html"></iframe>
+  </main>
+
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
