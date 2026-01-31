@@ -1,50 +1,54 @@
-/* ===== 基础变量 ===== */
+/* ===== 主题变量 ===== */
 :root {
   --bg: #ffffff;
   --text: #111;
-  --sidebar: #f5f5f5;
-  --highlight: #cce6ff;
+  --sidebar: #f4f4f4;
+  --highlight: #dbeafe;
+  --border: rgba(0,0,0,.12);
 }
 
 body.dark {
   --bg: #121212;
   --text: #eaeaea;
   --sidebar: #1e1e1e;
-  --highlight: #333;
+  --highlight: #2c2c2c;
+  --border: rgba(255,255,255,.15);
 }
 
+/* ===== 基础 ===== */
 body {
   margin: 0;
-  display: flex;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* ===== 侧边栏 ===== */
 #sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
   width: 260px;
   background: var(--sidebar);
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 60px 16px 16px; /* 整体下移，避开按钮 */
-  position: fixed;
-  left: 0;
-  top: 0;
-  transition: transform .3s;
+  padding: 64px 16px 16px;
+  transition: transform .3s ease;
+  z-index: 999;
 }
 
 #sidebar.closed {
   transform: translateX(-100%);
 }
 
-.nav a {
+/* ===== 导航 ===== */
+.nav a,
+summary {
   display: block;
   padding: 8px;
   text-decoration: none;
   color: inherit;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .nav a.active {
@@ -52,27 +56,44 @@ body {
 }
 
 .nav hr {
+  border: none;
+  border-top: 1px solid var(--border);
   margin: 12px 0;
 }
 
-/* ===== 互动区固定底部 ===== */
+details a {
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ===== 底部互动 ===== */
 .interaction {
   margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* ===== 内容区 ===== */
-#content {
-  margin-left: 260px;
-  padding: 24px;
-  width: 100%;
-  transition: margin-left .3s;
+.interaction button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+  color: inherit;
 }
 
-#sidebar.closed + #content {
-  margin-left: 0;
+/* ===== 主内容 ===== */
+#content {
+  max-width: 720px;
+  padding: 32px 20px;
+  margin: 0 auto;
 }
 
 /* ===== 按钮 ===== */
@@ -83,16 +104,9 @@ body {
   z-index: 1000;
 }
 
-#themeToggle {
-  cursor: pointer;
-}
-
-/* ===== 手机端 ===== */
+/* ===== 移动端 ===== */
 @media (max-width: 768px) {
   #sidebar {
-    width: 200px;
-  }
-  #content {
-    margin-left: 0;
+    width: 220px;
   }
 }
