@@ -4,85 +4,119 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== 主题 ===== */
+body.dark {
   background: #111;
   color: #ddd;
 }
 
-/* 布局 */
+body.light {
+  background: #f4f4f4;
+  color: #222;
+}
+
+/* ===== 布局 ===== */
 .layout {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
-/* 侧边栏 */
+/* ===== 侧边栏 ===== */
 #sidebar {
   width: 240px;
   background: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 16px;
   transition: transform 0.3s ease;
+}
+
+body.light #sidebar {
+  background: #ffffff;
 }
 
 #sidebar.collapsed {
   transform: translateX(-100%);
 }
 
-/* 标题 */
+/* ===== 标题 ===== */
 .site-title {
-  margin: 0 0 12px;
-  font-size: 18px;
+  margin: 0 0 16px;
+  font-size: 20px;
 }
 
-/* 导航 */
-nav ul {
+/* ===== 导航 ===== */
+.nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav li {
+.nav-list li {
   margin-bottom: 6px;
 }
 
-nav hr {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 12px 0;
+.divider {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  opacity: 0.6;
 }
 
+/* 链接 */
 .nav-item {
   display: block;
   padding: 6px 8px;
-  text-decoration: none;
-  color: #aaa;
   border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.8;
 }
 
 .nav-item:hover {
-  background: #333;
-  color: #fff;
+  background: rgba(255,255,255,0.08);
+  opacity: 1;
 }
 
 .nav-item.active {
-  background: #444;
-  color: #fff;
+  background: rgba(255,255,255,0.16);
+  opacity: 1;
 }
 
-/* 主内容 */
+body.light .nav-item:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+body.light .nav-item.active {
+  background: rgba(0,0,0,0.1);
+}
+
+/* 底部互动 */
+.sidebar-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 12px;
+}
+
+/* ===== 主内容 ===== */
 .main-content {
   flex: 1;
-  background: #111;
+  background: inherit;
 }
 
 iframe {
   width: 100%;
   height: 100%;
   border: none;
-  background: #111;
+  background: inherit;
 }
 
-/* 侧栏按钮（小屏） */
-.sidebar-toggle {
+/* ===== 按钮 ===== */
+.icon-btn {
   position: fixed;
   top: 12px;
   left: 12px;
@@ -93,10 +127,13 @@ iframe {
   padding: 6px 10px;
   font-size: 18px;
   cursor: pointer;
-  display: none;
 }
 
-/* 响应式 */
+.theme-btn {
+  left: 52px;
+}
+
+/* ===== 响应式 ===== */
 @media (max-width: 900px) {
   #sidebar {
     position: fixed;
@@ -104,9 +141,5 @@ iframe {
     top: 0;
     height: 100%;
     z-index: 1500;
-  }
-
-  .sidebar-toggle {
-    display: block;
   }
 }
