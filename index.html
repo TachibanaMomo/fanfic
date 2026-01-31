@@ -5,33 +5,28 @@
   <title>Fanfic</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body>
+<body class="dark">
 
-<button id="toggleSidebar" class="sidebar-toggle">☰</button>
+<!-- 左上角按钮 -->
+<button id="toggleSidebar" class="icon-btn">☰</button>
+<button id="themeToggle" class="icon-btn theme-btn">🌙</button>
 
 <div class="layout">
 
   <!-- 侧边栏 -->
   <aside id="sidebar">
-    <h2 class="site-title">📚 Fanfic</h2>
+    <div class="sidebar-top">
+      <h1 class="site-title">Fanfic</h1>
 
-    <nav>
-      <ul>
-        <!-- 页面 -->
+      <ul class="nav-list">
         <li>
           <a href="#" class="nav-item active" data-page="pages/about.html">
             作者介绍
           </a>
         </li>
-        <li>
-          <a href="#" class="nav-item" data-page="pages/reader.html">
-            读者互动
-          </a>
-        </li>
 
-        <hr />
+        <li class="divider">作品</li>
 
-        <!-- 文章 -->
         <li>
           <a href="#" class="nav-item" data-page="articles/a.html">
             第一篇文章
@@ -43,17 +38,15 @@
           </a>
         </li>
       </ul>
-    </nav>
+    </div>
+
+    <!-- 侧栏底部 · 互动 -->
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item reader-link" data-page="pages/reader.html">
+        每日和读者搏斗
+      </a>
+    </div>
   </aside>
 
-  <!-- 主内容区 -->
-  <main class="main-content">
-    <!-- 默认直接显示作者介绍 -->
-    <iframe id="contentFrame" src="pages/about.html"></iframe>
-  </main>
-
-</div>
-
-<script src="./script.js"></script>
-</body>
-</html>
+  <!-- 主内容 -->
+  <m
