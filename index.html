@@ -2,52 +2,42 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>Fanfic</title>
-  <link rel="stylesheet" href="./style.css" />
+  <title>Fanfic Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<button id="toggleSidebar" class="icon-btn">☰</button>
-<button id="themeToggle" class="icon-btn theme-btn">🌙</button>
+<button id="toggleSidebar" class="sidebar-btn">☰</button>
+<button id="toggleTheme" class="theme-btn">🌙</button>
 
-<div class="layout">
+<div class="container">
+  <aside id="sidebar" class="sidebar">
+    <h2>作者</h2>
+    <ul>
+      <li><a href="#" data-page="pages/about.html">作者介绍</a></li>
+    </ul>
 
-  <!-- 侧边栏 -->
-  <aside id="sidebar">
+    <hr />
 
-    <!-- 上半部分：导航 -->
-    <nav class="sidebar-main">
-      <a href="#" class="nav-item active" data-page="pages/about.html">
-        作者介绍
-      </a>
+    <h2>文章</h2>
+    <ul>
+      <li><a href="#" data-page="articles/a.html">文章 A</a></li>
+      <li><a href="#" data-page="articles/b.html">文章 B</a></li>
+    </ul>
 
-      <div class="divider"></div>
+    <hr />
 
-      <a href="#" class="nav-item" data-page="articles/a.html">
-        第一篇文章
-      </a>
-      <a href="#" class="nav-item" data-page="articles/b.html">
-        第二篇文章
-      </a>
-    </nav>
-
-    <!-- 底部：互动（真正贴底） -->
-    <div class="sidebar-footer">
-      <div class="divider"></div>
-      <a href="#" class="nav-item" data-page="pages/reader.html">
-        💬 读者互动
-      </a>
-    </div>
-
+    <ul class="bottom">
+      <li><a href="#" data-page="pages/reader.html">和读者互动</a></li>
+    </ul>
   </aside>
 
-  <!-- 主内容 -->
-  <main class="main-content">
-    <iframe id="contentFrame" src="pages/about.html"></iframe>
+  <main id="content" class="content">
+    <!-- 默认加载作者介绍 -->
   </main>
-
 </div>
 
-<script src="./script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
