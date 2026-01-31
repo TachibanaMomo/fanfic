@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>Fanfic Archive</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fanfic</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<button id="toggleSidebar" class="sidebar-btn">☰</button>
-<button id="toggleTheme" class="theme-btn">🌙</button>
+<body class="light">
+  <!-- 侧栏切换按钮 -->
+  <button id="toggleSidebar">☰</button>
 
-<div class="container">
-  <aside id="sidebar" class="sidebar">
-    <h2>作者</h2>
-    <ul>
-      <li><a href="#" data-page="pages/about.html">作者介绍</a></li>
-    </ul>
+  <!-- 侧边栏 -->
+  <aside id="sidebar">
+    <nav class="nav">
+      <a href="#" data-page="pages/about.html">作者介绍</a>
 
-    <hr />
+      <hr>
 
-    <h2>文章</h2>
-    <ul>
-      <li><a href="#" data-page="articles/a.html">文章 A</a></li>
-      <li><a href="#" data-page="articles/b.html">文章 B</a></li>
-    </ul>
+      <a href="#" data-page="articles/a.html">第一篇文章</a>
+      <a href="#" data-page="articles/b.html">第二篇文章</a>
+    </nav>
 
-    <hr />
-
-    <ul class="bottom">
-      <li><a href="#" data-page="pages/reader.html">和读者互动</a></li>
-    </ul>
+    <!-- 互动区（始终在底部） -->
+    <div class="interaction">
+      <a href="#" data-page="pages/reader.html">💬 读者互动</a>
+      <button id="themeToggle">🌙 / ☀️</button>
+    </div>
   </aside>
 
-  <main id="content" class="content">
-    <!-- 默认加载作者介绍 -->
+  <!-- 主内容区 -->
+  <main id="content">
+    <!-- 默认显示作者介绍 -->
   </main>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
